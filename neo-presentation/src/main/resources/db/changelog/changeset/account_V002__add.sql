@@ -1,0 +1,2 @@
+ALTER TABLE account
+  ADD COLUMN age int NOT NULL;

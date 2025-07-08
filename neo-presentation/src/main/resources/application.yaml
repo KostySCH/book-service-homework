@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: neo-presentation
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/postgres?currentSchema=account_service}
+    username: ${USER_DB:account_service}
+    password: ${PASSWORD_DB:account_service}
+    driver-class-name: org.postgresql.Driver
+  liquibase:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/postgres?currentSchema=account_service}
+    user: ${USER_DB:account_service}
+    password: ${PASSWORD_DB:account_service}
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+    driver-class-name: org.postgresql.Driver
+    liquibase-schema: account_service
+    enabled: true
