@@ -1,0 +1,30 @@
+spring:
+  liquibase:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/booksdb?currentSchema=books}
+    user: ${USER_DB:books_user}
+    password: ${PASSWORD_DB:books_password}
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+    driver-class-name: org.postgresql.Driver
+    liquibase-schema: books
+    enabled: true
+  application:
+    name: books-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/booksdb?currentSchema=books
+    driver-class-name: org.postgresql.Driver
+    username: books_user
+    password: books_password
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+  cloud:
+    config:
+      enabled: false
+main:
+  allow-bean-definition-overriding: true
+feign:
+  hystrix:
+    enabled: false
+server:
+  port: 8081
